@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.starlette.io/"><img width="420px" src="https://raw.githubusercontent.com/encode/starlette/master/docs/img/starlette.png" alt='starlette'></a>
+  <img width="420px" src="/img/starlette.png" alt='starlette'>
 </p>
 <p align="center">
     <em>✨ The little ASGI framework that shines. ✨</em>
@@ -15,11 +15,8 @@
 
 ---
 
-**Documentation**: [https://www.starlette.io/](https://www.starlette.io/)
 
----
-
-# Starlette
+# Introduction
 
 Starlette is a lightweight [ASGI][asgi] framework/toolkit,
 which is ideal for building async web services in Python.
@@ -68,24 +65,23 @@ from starlette.routing import Route
 async def homepage(request):
     return JSONResponse({'hello': 'world'})
 
-routes = [
-    Route("/", endpoint=homepage)
-]
 
-app = Starlette(debug=True, routes=routes)
+app = Starlette(debug=True, routes=[
+    Route('/', homepage),
+])
 ```
 
-Then run the application using Uvicorn:
+Then run the application...
 
 ```shell
 $ uvicorn example:app
 ```
 
-For a more complete example, see [encode/starlette-example](https://github.com/encode/starlette-example).
+For a more complete example, [see here](https://github.com/encode/starlette-example).
 
 ## Dependencies
 
-Starlette only requires `anyio`, and the following are optional:
+Starlette only requires `anyio`, and the following dependencies are optional:
 
 * [`httpx`][httpx] - Required if you want to use the `TestClient`.
 * [`jinja2`][jinja2] - Required if you want to use `Jinja2Templates`.
